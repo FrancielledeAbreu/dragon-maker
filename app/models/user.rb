@@ -1,11 +1,19 @@
 class User < ApplicationRecord
   belongs_to :address
+  has_many :contacts, dependent: :destroy
   has_secure_password
   before_validation :set_address_from_cep
 
-  validates :email, uniqueness: true
-  validates :cpf, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+  validates :cpf, presence: true, uniqueness: true
   validate :cpf_must_be_valid
+  validates :phone, presence: true
+  validates :street_number, presence: true
+  # validates :latitude, presence: true
+  # validates :longitude, presence: true
+  validates :cep, presence: true
 
   private
 
@@ -18,8 +26,7 @@ class User < ApplicationRecord
       throw(:abort)
     end
   rescue StandardError => e
-    Rails.logger.error "Failed to create address: #{e.message}"
-    errors.add(:cep, 'Failed to process cep')
+    errors.add(:cep, "Failed to process cep  #{e.message}")
     throw(:abort)
   end
 
