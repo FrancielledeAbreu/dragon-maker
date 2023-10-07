@@ -1,41 +1,40 @@
-module Api
-  module V1
-    class AddressesController < ApplicationController
-      def search
-        results = ViaCepService.by_city_and_address(params[:uf], params[:city], params[:street])
+class Api::V1::AddressesController < AuthenticatedController
+  before_action :authorized, only: [:search_by_cep]
 
-        if results.empty?
-          render json: { error: 'No addresses found' }, status: :not_found
-        else
-          addresses = results&.map do |result|
-            Address.find_or_create_by(cep: result['cep']) do |address|
-              address.street = result['logradouro']
-              address.city = result['localidade']
-              address.state = result['uf']
-              address.neighborhood = result['bairro']
-            end
-          end
+  def search
+    results = ViaCepService.by_city_and_address(params[:uf], params[:city], params[:street])
 
-          render json: addresses, status: :ok
-        end
-      end
+    if results.empty?
+      render_error('No addresses found')
+    else
+      addresses = results.map { |result| find_or_create_address(result) }
+      render json: addresses, status: :ok
+    end
+  end
 
-      def search_by_cep
-        result = ViaCepService.fetch_address(params[:cep])
+  def search_by_cep
+    result = ViaCepService.fetch_address(params[:cep])
 
-        if result && result['erro'] != true
-          address = Address.find_or_create_by(cep: result['cep']) do |addr|
-            addr.street = result['logradouro']
-            addr.city = result['localidade']
-            addr.state = result['uf']
-            addr.neighborhood = result['bairro']
-          end
+    if result && result['erro'] != true
+      address = find_or_create_address(result)
+      render json: address, status: :ok
+    else
+      render_error('Address not found')
+    end
+  end
 
-          render json: address, status: :ok
-        else
-          render json: { error: 'Address not found' }, status: :not_found
-        end
-      end
+  private
+
+  def render_error(message)
+    render json: { error: message }, status: :not_found
+  end
+
+  def find_or_create_address(result)
+    Address.find_or_create_by(cep: result['cep']) do |addr|
+      addr.street = result['logradouro']
+      addr.city = result['localidade']
+      addr.state = result['uf']
+      addr.neighborhood = result['bairro']
     end
   end
 end

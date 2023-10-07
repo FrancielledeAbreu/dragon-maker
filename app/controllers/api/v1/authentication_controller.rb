@@ -29,11 +29,12 @@ module Api
 
       def user_params
         if params[:authentication]
-          params.require(:authentication).permit(:name, :email, :password, :cpf, :phone, :cep, :street_number, :complement,
-                                                 :latitude, :longitude)
+          params.require(:authentication)
+                .permit(:name, :email, :password, :cpf, :phone,
+                        :cep, :street_number, :complement, :latitude, :longitude)
         else
-          params.permit(:name, :email, :password, :cpf, :phone, :cep, :street_number, :complement, :latitude,
-                        :longitude)
+          params.permit(:name, :email, :password, :cpf, :phone,
+                        :cep, :street_number, :complement, :latitude, :longitude)
         end
       end
 

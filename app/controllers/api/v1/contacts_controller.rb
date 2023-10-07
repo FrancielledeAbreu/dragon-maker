@@ -3,37 +3,27 @@ class Api::V1::ContactsController < AuthenticatedController
   before_action :set_contact, only: %i[show destroy update]
 
   def index
-    render json: @user.contacts, status: :ok
+    render_json(@user.contacts)
   end
 
   def create
     contact = @user.contacts.build(contact_params)
-
-    if contact.save
-      render json: contact, status: :created
-    else
-      render json: { error: 'Failed to create contact', details: contact.errors.full_messages },
-             status: :unprocessable_entity
-    end
+    contact.save ? render_json(contact, :created) : render_error(contact.errors.full_messages)
   end
 
   def show
-    render json: @contact, status: :ok
+    render_json(@contact)
   end
 
   def destroy
-    if @contact.destroy
-      render json: { message: 'Contact deleted successfully' }, status: :ok
-    else
-      render json: { error: 'Failed to delete contact' }, status: :unprocessable_entity
-    end
+    @contact.destroy ? render_message('Contact deleted successfully') : render_error('Failed to delete contact')
   end
 
   def update
     if @contact.update(contact_params)
-      render json: { message: 'Contact updated successfully' }, status: :ok
+      render_message('Contact updated successfully')
     else
-      render json: { error: @contact.errors.full_messages }, status: :unprocessable_entity
+      render_error(@contact.errors.full_messages)
     end
   end
 
@@ -52,17 +42,13 @@ class Api::V1::ContactsController < AuthenticatedController
     end
 
     if conditions.empty?
-      render json: { error: 'No valid search parameters provided' }, status: :bad_request
+      render_error('No valid search parameters provided', :bad_request)
       return
     end
 
     contacts = @user.contacts.where(conditions.join(' AND '), values)
 
-    if contacts.empty?
-      render json: { error: 'No contacts found for the provided search criteria' }, status: :not_found
-    else
-      render json: contacts, status: :ok
-    end
+    contacts.empty? ? render_error('No contacts found for the provided search criteria') : render_json(contacts)
   end
 
   private
@@ -76,7 +62,20 @@ class Api::V1::ContactsController < AuthenticatedController
   end
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :cpf, :phone, :address_id, :street_number,
-                                    :complement, :latitude, :longitude)
+    params.require(:contact)
+          .permit(:name, :email, :cpf, :phone, :address_id,
+                  :street_number, :complement, :latitude, :longitude)
+  end
+
+  def render_json(data, status = :ok)
+    render json: data, status:
+  end
+
+  def render_message(message, status = :ok)
+    render json: { message: }, status:
+  end
+
+  def render_error(errors, status = :unprocessable_entity)
+    render json: { error: errors.is_a?(Array) ? errors.join(', ') : errors }, status:
   end
 end
