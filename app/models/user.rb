@@ -11,8 +11,6 @@ class User < ApplicationRecord
   validate :cpf_must_be_valid
   validates :phone, presence: true
   validates :street_number, presence: true
-  # validates :latitude, presence: true
-  # validates :longitude, presence: true
   validates :cep, presence: true
 
   private

@@ -7,7 +7,9 @@ class ViaCepService
 
   def self.fetch_address(cep)
     url = "#{base_uri}/#{cep}/json"
-    get("#{url}")
+    response = get(url)
+    Rails.logger.info "Response from ViaCepService: #{response}"
+    response.parsed_response
   end
 
   def self.by_city_and_address(uf, city, address)
