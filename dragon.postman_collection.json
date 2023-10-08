@@ -1,0 +1,841 @@
+{
+	"info": {
+		"_postman_id": "83967563-757e-4546-a251-4dc0ad26ec31",
+		"name": "dragon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "register_user same cpf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/register?email=new_email@email.com.br&password=senha123&name=New User&cep=81490526&cpf=90238047083&phone=41991919191&street_number=15a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "new_email@email.com.br"
+								},
+								{
+									"key": "password",
+									"value": "senha123"
+								},
+								{
+									"key": "name",
+									"value": "New User"
+								},
+								{
+									"key": "cep",
+									"value": "81490526"
+								},
+								{
+									"key": "cpf",
+									"value": "90238047083"
+								},
+								{
+									"key": "phone",
+									"value": "41991919191"
+								},
+								{
+									"key": "street_number",
+									"value": "15a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register_user same email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/register?email=email@email.com.br&password=senha123&name=New User Two&cep=81490526&cpf=57170917025&phone=41991919191&street_number=15a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "email@email.com.br"
+								},
+								{
+									"key": "password",
+									"value": "senha123"
+								},
+								{
+									"key": "name",
+									"value": "New User Two"
+								},
+								{
+									"key": "cep",
+									"value": "81490526"
+								},
+								{
+									"key": "cpf",
+									"value": "57170917025"
+								},
+								{
+									"key": "phone",
+									"value": "41991919191"
+								},
+								{
+									"key": "street_number",
+									"value": "15a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/register?email=email@email.com.br&password=senha123&name=New User&cep=81490526&cpf=90238047083&phone=41991919191&street_number=15a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "email@email.com.br"
+								},
+								{
+									"key": "password",
+									"value": "senha123"
+								},
+								{
+									"key": "name",
+									"value": "New User"
+								},
+								{
+									"key": "cep",
+									"value": "81490526"
+								},
+								{
+									"key": "cpf",
+									"value": "90238047083"
+								},
+								{
+									"key": "phone",
+									"value": "41991919191"
+								},
+								{
+									"key": "street_number",
+									"value": "15a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login success",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/login?email=email@email.com.br&password=senha123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "email@email.com.br"
+								},
+								{
+									"key": "password",
+									"value": "senha123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login fail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/login?email=email@email.com.br&password=wrongpass",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "email@email.com.br"
+								},
+								{
+									"key": "password",
+									"value": "wrongpass"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "get address by uf/city/street",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/addresses/search?uf=PR&city=curitiba&street=Francisco%20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"addresses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "PR"
+								},
+								{
+									"key": "city",
+									"value": "curitiba"
+								},
+								{
+									"key": "street",
+									"value": "Francisco%20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get address by cep unauthorized",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/addresses/search_by_cep/81490300",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"addresses",
+								"search_by_cep",
+								"81490300"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get address by cep success",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/addresses/search_by_cep/81490300",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"addresses",
+								"search_by_cep",
+								"81490300"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy success",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.biGUrPXdbW8Bas5kurHaiI-6uSaSKYAiqOlnOnIBN2A",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user?password=senha123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "senha123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy fail Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.biGUrPXdbW8Bas5kurHaiI-6uSaSKYAiqOlnOnIBN2A",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"new_email02@email.com\",\n\t\"password\": \"senha123\",\n\t\"name\": \"New name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one fail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one success",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/search?name=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search cpf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/search?cpf=60505061082",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "60505061082"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search name and cpf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/search?name=test&cpf=60505061082",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test"
+								},
+								{
+									"key": "cpf",
+									"value": "60505061082"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"email_new@email.com\",\n\t\"name\": \"New Name Contact\",\n\t\"street_number\": \"15\",\n\t\"address_id\": 23,\n\t\"cpf\": \"73748644000\",\n\t\"phone\": \"3141315254\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "contact@email.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "New contact",
+									"disabled": true
+								},
+								{
+									"key": "street_number",
+									"value": "22",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "60505061082",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "4133333333",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new contact Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"email0001w@email.com\",\n\t\"name\": \"New\",\n\t\"street_number\": \"22\",\n\t\"address_id\": 15,\n\t\"cpf\": \"73748644000\",\n\t\"phone\": \"3141315254\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"10"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "contact@email.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "New contact",
+									"disabled": true
+								},
+								{
+									"key": "street_number",
+									"value": "22",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "60505061082",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "4133333333",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete contact",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.PwAxSrCKxF470Eku8HaMMat9Bh2whYrE_F9tK-2cyx8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"email_new@email.com\",\n\t\"name\": \"New Name Contact\",\n\t\"street_number\": \"15\",\n\t\"address_id\": 23,\n\t\"cpf\": \"73748644000\",\n\t\"phone\": \"3141315254\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/contacts/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"11"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "contact@email.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "New contact",
+									"disabled": true
+								},
+								{
+									"key": "street_number",
+									"value": "22",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "60505061082",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "4133333333",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
