@@ -3,9 +3,7 @@ class Address < ApplicationRecord
   has_many :contacts
 
   def self.create_from_cep(cep)
-    address_data = ViaCepService.fetch_address(cep).parsed_response
-
-    puts "Address Data: #{address_data.inspect}"
+    address_data = ViaCepService.fetch_address(cep)
 
     address = find_or_create_by(cep: address_data['cep'].gsub('-', '')) do |addr|
       addr.street = address_data['logradouro']
