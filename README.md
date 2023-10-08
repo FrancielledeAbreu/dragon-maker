@@ -1,24 +1,32 @@
-# README
+## Francielle Dragon Maker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+🚀 Começando
+Estas instruções fornecerão uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste.
 
-Things you may want to cover:
+Pré-requisitos
+O que você precisa para instalar o software:
 
-* Ruby version
+[Docker](https://www.docker.com/)
+[Docker Compose](https://docs.docker.com/compose/)
 
-* System dependencies
+#### Instalação
+Clone o repositório:
+```
+git clone git@github.com:FrancielledeAbreu/dragon-maker.git
+```
+Navegue até a pasta do projeto:
+```
+cd dragon-make-test
+```
+Construa e inicie os serviços usando Docker Compose:
+```
+docker-compose up --build
 
-* Configuration
+Listening on http://0.0.0.0:5000
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### 🧪 Testes
+Para rodar os testes, execute:
+```
+docker-compose run web bundle exec rspec
+```
